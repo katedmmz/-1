@@ -20,8 +20,9 @@ namespace лабораторная_1
             saveFileDialog1.Filter = "Название файла (.txt)| .txt";
             colorDialog1.Color = this.BackColor;
             colorDialog1.FullOpen = true;
+            
         }
-
+        bool tbChange = false;
         private void toolStripComboBox1_Click(object sender, EventArgs e)
         {
 
@@ -101,6 +102,12 @@ namespace лабораторная_1
                         File.WriteAllText(filePath, richTextBox1.Text);
                     }
                     File.WriteAllText(filePath, richTextBox1.Text);
+                    tbChange = false;
+                    if (tbChange == true)
+                    {
+                        filePath = dialog.FileName;
+                        File.WriteAllText(filePath, richTextBox1.Text);
+                    }
                 }
             }
         }
@@ -167,5 +174,19 @@ namespace лабораторная_1
                 return;
             richTextBox1.BackColor = colorDialog1.Color;
         }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            tbChange = true;
+        }
+
+        private void цветШрифтаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            richTextBox1.ForeColor = colorDialog1.Color;
+        }
+
+       
     }
 }
