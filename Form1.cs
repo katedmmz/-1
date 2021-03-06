@@ -84,7 +84,7 @@ namespace лабораторная_1
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    richTextBox1.Font = dialog.Font;
+                    richTextBox1.SelectionFont = dialog.Font;
                 }
             }
         }
